@@ -35,4 +35,7 @@ Este projeto é um sistema simples de gerenciamento de biblioteca desenvolvido e
    ruby app.rb
    ```
 4. **Acessando página**
-  http://localhost:4567
+  
+  ```bash
+   http://localhost:4567
+  ```
