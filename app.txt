@@ -1,0 +1,99 @@
+require 'sinatra'
+require 'json'
+
+post '/books' do
+  begin
+    data = JSON.parse(request.body.read)
+    book_name = data['name']
+    unless book_name.empty?
+      File.open("books.txt", "a") do |file|
+        file.puts(book_name)
+      end
+      status 201
+      { message: "Livro '#{book_name}' adicionado com sucesso!" }.to_json
+    else
+      status 400
+      { message: "O nome do livro não pode ser vazio." }.to_json
+    end
+  rescue => e
+    status 500
+    { error: e.message }.to_json
+  end
+end
+
+get '/books' do
+  begin
+    if File.exist?("books.txt")
+      books = File.readlines("books.txt").map(&:chomp)
+      if books.empty?
+        status 200
+        { message: "Nenhum livro encontrado." }.to_json
+      else
+        status 200
+        { books: books }.to_json
+      end
+    else
+      status 404
+      { message: "Arquivo de livros não encontrado." }.to_json
+    end
+  rescue => e
+    status 500
+    { error: e.message }.to_json
+  end
+end
+
+delete '/books/:id' do
+  begin
+    if File.exist?("books.txt")
+      books = File.readlines("books.txt").map(&:chomp)
+      id = params[:id].to_i
+
+      if id > 0 && id <= books.size
+        removed_book = books.delete_at(id - 1)
+        File.open("books.txt", "w") { |file| books.each { |book| file.puts(book) } }
+
+        status 200
+        { message: "Livro '#{removed_book}' removido com sucesso!" }.to_json
+      else
+        status 400
+        { message: "Escolha inválida." }.to_json
+      end
+    else
+      status 404
+      { message: "Arquivo de livros não encontrado." }.to_json
+    end
+  rescue => e
+    status 500
+    { error: e.message }.to_json
+  end
+end
+
+put '/books/:id' do
+  begin
+    if File.exist?("books.txt")
+      books = File.readlines("books.txt").map(&:chomp)
+      id = params[:id].to_i
+      data = JSON.parse(request.body.read)
+      new_book = data['name']
+
+      if id > 0 && id <= books.size && !new_book.empty?
+        books[id - 1] = new_book
+        File.open("books.txt", "w") { |file| books.each { |book| file.puts(book) } }
+
+        status 200
+        { message: "Livro alterado com sucesso para '#{new_book}'!" }.to_json
+      else
+        status 400
+        { message: "Escolha inválida ou nome vazio." }.to_json
+      end
+    else
+      status 404
+      { message: "Arquivo de livros não encontrado." }.to_json
+    end
+  rescue => e
+    status 500
+    { error: e.message }.to_json
+  end
+end
+
+run! if app_file == $0

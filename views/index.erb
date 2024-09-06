@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRUD de Livros</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <form id="add-book-form">
+    <label for="book_name">Nome do Livro:</label>
+    <input type="text" id="book_name" name="book_name" required>
+    <button type="submit">Adicionar Livro</button>
+  </form>
+  
+  <form id="update-book-form" style="display: none;">
+    <input type="hidden" id="update_index">
+    <label for="update_name">Novo Nome do Livro:</label>
+    <input type="text" id="update_name" name="update_name" required>
+    <button type="submit">Atualizar Livro</button>
+    <button type="button" id="cancel-update">Cancelar</button>
+  </form>
+
+  <h2>Lista de Livros</h2>
+  <ul id="book-list"></ul>
+  
+  <script src="/js/script.js"></script>
+
+</body>
+</html>
