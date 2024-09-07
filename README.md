@@ -3,7 +3,7 @@
 Este projeto é um sistema simples de gerenciamento de biblioteca desenvolvido em Ruby. Ele permite a criação, leitura, alteração e remoção de livros armazenados em um arquivo de texto (`books.txt`). 
 
 ## Funcionalidades
-
+### Livros
 - **Criar Livro:** Adiciona um novo livro ao arquivo `books.txt`.
 - **Ler Livros:** Exibe a lista de livros armazenados no arquivo.
 - **Alterar Livro:** Atualiza o nome de um livro existente.
@@ -13,7 +13,8 @@ Este projeto é um sistema simples de gerenciamento de biblioteca desenvolvido e
 
 - Ruby instalado no seu ambiente de desenvolvimento.
 - O arquivo `books.txt` será criado automaticamente se não existir.
-- Sinatra instalado através do comando gem install sinatra
+- Sinatra instalado através do comando `gem install sinatra`
+- Rackup instalado através do comando `gem install rackup`
 
 ## Uso
 
@@ -29,13 +30,19 @@ Este projeto é um sistema simples de gerenciamento de biblioteca desenvolvido e
    cd library_rb
    ```
 
-3. **Execute o script Ruby:**
+3. **Instale as dependências:**
+   ```bash
+   gem install sinatra
+   gem install rackup
+   ```
+
+4. **Execute o script Ruby:**
 
    ```bash
    ruby app.rb
    ```
-4. **Acessando página**
+5. **Acessando página**
   
-  ```bash
-   http://localhost:4567
-  ```
+   ```bash
+      http://localhost:4567
+   ```
