@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUD</title>
-  <link rel="stylesheet" href="/css/style.css">
-</head>
-<body>
-  <h2>´`</h2>
-  <script src="/js/script.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Gerencie sua biblioteca</h1>
+      </header>
 
-</body>
+      <section class="a_flex">
+        <button id="addBookButton">Cadastrar novo livro</button>
+        <button id="listBooksButton">Listar livros existentes</button>
+      </section>
+
+      <section class="form-section">
+        <h2>Adicionar Novo Livro</h2>
+        <form id="addBookForm">
+          <input type="text" id="bookName" placeholder="Nome do Livro" required>
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section class="list-section">
+        <h2>Lista de Livros</h2>
+        <ul id="bookList"></ul>
+      </section>
+    </div>
+
+    <footer class="group-info">
+      Produzido por: Rebeca Azevedo, Bernardo Cavalheiro, João Victor Marcolino e Luís Gabriel
+    </footer>
+    
+    <script src="/js/script.js"></script>
+  </body>
 </html>
