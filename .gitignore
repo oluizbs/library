@@ -1,2 +1,1 @@
-# ignora os arquivos .txt
-*.txt
+node_modules

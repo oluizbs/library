@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Gerencie sua biblioteca</h1>
+      </header>
+
+      <section class="a_flex">
+        <button id="addBookButton">Cadastrar novo livro</button>
+        <button id="listBooksButton">Listar livros existentes</button>
+      </section>
+
+      <section class="form-section">
+        <h2>Adicionar Novo Livro</h2>
+        <form id="addBookForm">
+          <input type="text" id="bookName" placeholder="Nome do Livro" required>
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section class="list-section">
+        <h2>Lista de Livros</h2>
+        <table id="bookListTable">
+          <thead>
+              <th>Nome do Livro</th>
+              <th>Alterar</th>
+              <th>Remover</th>
+          </thead>
+          <tbody id="bookList"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <script type="module" src="/js/script.js"></script>
+  </body>
+</html>

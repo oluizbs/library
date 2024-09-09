@@ -1,0 +1,7 @@
+Admin>
+	cadastros de livros
+Bibliotecario>
+	cadastro de usuários
+	controle de fluxo
+Usuario>
+	controle de livro q leu 
