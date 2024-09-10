@@ -1,0 +1,11 @@
+Admin>
+	cadastros de livros
+		controle total sobre os livros da biblioteca -pronto
+Bibliotecario>
+	cadastro de usuários
+		adiciona, remove, altera os usuaios
+	controle de fluxo
+		altera status de cada livro entre "Ocupado", "Disponivel", "Em uso" - pronto
+Usuario>
+	controle de livro q leu
+		select com base na lista de livros disponíveis na biblioteca e não pode repetir livro  

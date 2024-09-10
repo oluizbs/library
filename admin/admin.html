@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="Icon" href="https://cdn-icons-png.flaticon.com/512/195/195786.png">
-    <title>Biblioteca</title>
+    <link rel="Icon" href="https://static.vecteezy.com/system/resources/thumbnails/013/993/970/small_2x/illustration-of-a-book-with-a-red-cover-free-png.png">
+    <title>Admin</title>
     <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
@@ -22,6 +22,7 @@
         <h2>Adicionar Novo Livro</h2>
         <form id="addBookForm">
           <input type="text" id="bookName" placeholder="Nome do Livro" required>
+          <input type="text" id="autor" placeholder="Nome do Autor" required>
           <button type="submit">Adicionar</button>
         </form>
       </section>
@@ -31,14 +32,14 @@
         <table id="bookListTable">
           <thead>
               <th>Nome do Livro</th>
-              <th>Alterar</th>
-              <th>Remover</th>
+              <th>Nome do Autor</th>
+              <th colspan="2">Opções</th>
           </thead>
           <tbody id="bookList"></tbody>
         </table>
       </section>
     </div>
 
-    <script type="module" src="/js/script.js"></script>
+    <script type="module" src="/admin/adminScript.js"></script>
   </body>
 </html>

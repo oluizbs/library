@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="Icon" href="https://cdn-icons-png.flaticon.com/512/195/195786.png">
+    <title>Biblioteca</title>
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Controle de Leitura</h1>
+      </header>
+
+      <section class="a_flex">
+        <button id="addBookButton">Novo Livro Lido</button>
+        <button id="listBooksButton">Listar Livros Lidos</button>
+      </section>
+
+      <section class="form-section">
+        <h2>Adicionar Novo Livro Lido</h2>
+        <form id="addBookForm">
+          <select type="text" id="books"></select>
+          <button type="submit">Adicionar</button>
+        </form>
+      </section>
+
+      <section class="list-section">
+        <h2>Lista de Livros Lidos</h2>
+        <table id="bookListTable">
+          <thead>
+              <th>Nome do Livro</th>
+              <th>Nome do Autor</th>
+              <th colspan="2">Opções</th>
+          </thead>
+          <tbody id="bookList"></tbody>
+        </table>
+      </section>
+    </div>
+
+    <script type="module" src="/usuario/usuarioScript.js"></script>
+  </body>
+</html>

@@ -1,16 +1,90 @@
 {
   "books": [
     {
-      "id": "e8a8",
-      "book_name": "aa"
+      "nome": "Gabigol",
+      "id": "b2c3",
+      "status": "Livro",
+      "autor": "Max"
     },
     {
-      "id": "7451",
-      "book_name": "a"
+      "nome": "Undefined",
+      "id": "d1d3",
+      "autor": "Undefined"
     },
     {
-      "id": "8896",
-      "book_name": "Test"
+      "id": "0ced",
+      "nome": "Gabigoe",
+      "autor": "Gabriel García Márquez",
+      "status": "Uere"
+    },
+    {
+      "id": "8b57",
+      "nome": "A Revolução dos Bichos",
+      "autor": "George Orwell",
+      "status": "Disponível"
+    },
+    {
+      "id": "9a01",
+      "nome": "O Sol é para Todos",
+      "autor": "Harper Lee",
+      "status": "Disponível"
+    },
+    {
+      "id": "9a02",
+      "nome": "1984",
+      "autor": "George Orwell",
+      "status": "Disponível"
+    },
+    {
+      "id": "9a05",
+      "nome": "Max Verstappen: O Início",
+      "autor": "Max Verstappen",
+      "status": "Disponível"
+    },
+    {
+      "id": "9a06",
+      "nome": "Sapiens: Uma Breve História da Humanidade",
+      "autor": "Yuval Noah Harari",
+      "status": "Disponível"
+    },
+    {
+      "id": "9a07",
+      "nome": "A Arte da Guerra",
+      "autor": "Sun Tzu",
+      "status": "Disponível"
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "2",
+      "ticket": 2540,
+      "nome": "Frete",
+      "livrosLidos": [
+        {
+          "id": "23",
+          "nome": "aaa",
+          "autor": "aaaa",
+          "status": "Disponível"
+        },
+        {
+          "id": "54a8",
+          "nome": "1984",
+          "autor": "George Orwell",
+          "status": "Disponível"
+        },
+        {
+          "id": "b2c3",
+          "nome": "O Alquimista",
+          "autor": "Paulo Coelho",
+          "status": "Disponível"
+        },
+        {
+          "id": "9a04",
+          "nome": "O Código Da Vinci",
+          "autor": "Dan Brown",
+          "status": "Disponível"
+        }
+      ]
     }
   ]
 }
