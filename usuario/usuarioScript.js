@@ -1,15 +1,35 @@
 import {API} from "../js/api.js"
 import {Book} from '../js/Book.js'
 
+const clientChave = "client"
+
 document.getElementById('addBookForm').addEventListener('submit', async function (e) {
   e.preventDefault();
 
   const bookId = document.getElementById('books').value;
   const book = await buscarLivro(bookId)
-  const usuario = await buscarUsuario();
+  const userId = carregarStorage(clientChave).id;
+  const usuario = await buscarUsuario(userId);
   usuario.livrosLidos.push(book);
-  await readBook(2,usuario);
+  const client = carregarStorage(clientChave)
+  await readBook(client.id,usuario);
 });
+
+function carregarStorage(chave){
+  const client = localStorage.getItem(chave)
+  if(!client){
+    return []
+  }
+  
+  const clientFormatado = JSON.parse(client)
+  document.getElementById("msgSelect").innerText = clientFormatado.nome
+  return clientFormatado
+}
+
+function salvarStorage(chave, client){
+  localStorage.setItem(chave,JSON.stringify(client))
+  document.getElementById("msgSelect").innerText = client.nome
+}
 
 
 async function buscarLivro(bookId) {
@@ -24,9 +44,9 @@ async function buscarLivro(bookId) {
   }
 }
 
-async function buscarUsuario(userId = 2) {
+async function buscarUsuario(userId) {
   try {
-    const response = await fetch(`${API}/usuarios/${userId}`);
+    const response = await fetch(`${API}/clients/${userId}`);
     if (!response.ok) {
       throw new Error('Erro na resposta do servidor: ' + response.statusText);
     }
@@ -49,20 +69,56 @@ async function loadBooks() {
   }
 }
 
-async function editBook(bookId) {
-  const newBookName = prompt("Digite o novo nome do livro:");
-  if (!newBookName) {
-    alert("O nome do livro não pode ser vazio!");
-    return;
-  }
+async function trocarLivro(livroId){
+    const books = await loadBooks();
+    desenharSelectEditLivros(books);
+    document.getElementById('confirmar').addEventListener('click', async () => {
+      const bookId = document.getElementById('editLivros').value
+      const newBook = await buscarLivro(bookId);
+      const livrosLidos = carregarStorage(clientChave).livrosLidos
+      let chave = 0;
+      for(let livro of livrosLidos){
+        if(livro.id == livroId){
+          livrosLidos[chave] = newBook;
+          break;
+      }
+      ++chave
+    }
+    const userId = carregarStorage(clientChave).id;
+    const client = await buscarUsuario(userId);
+    client.livrosLidos = livrosLidos;
+    editBook(userId, client)
+    salvarStorage(clientChave, client)
+    })
+}
 
+async function desenharSelectEditLivros(books) {
+  const userId = carregarStorage(clientChave).id;
+  const usuario = await buscarUsuario(userId);
+  const livrosNaoLidos = books.filter(book => {
+    // Verifica se o livro atual está na lista de livros lidos pelo usuário
+    return !usuario.livrosLidos.some(livroLido => livroLido.id === book.id);
+  });
+
+  const select = document.querySelector('#editLivros');
+  select.innerHTML = ''; // Limpa a lista de opções antes de desenhar os livros não lidos
+
+  for (const book of livrosNaoLidos) {
+    const option = document.createElement("option");
+    option.value = book.id;
+    option.text = `${book.nome} - ${book.autor}`;
+    select.appendChild(option);
+  }
+}
+
+async function editBook(userId, client) {
   try {
-    const response = await fetch(`${API}/books/${bookId}`, {
+    const response = await fetch(`${API}/clients/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ book_name: newBookName }),
+      body: JSON.stringify(client)
     });
 
     if (!response.ok) {
@@ -77,9 +133,9 @@ async function editBook(bookId) {
   }
 }
 
-async function readBook(userId = 2, usuario) {
+async function readBook(userId, usuario) {
   try {
-    const response = await fetch(`${API}/usuarios/${userId}`, {
+    const response = await fetch(`${API}/clients/${userId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -123,14 +179,14 @@ async function removeBook(bookId) {
 }
 
 async function desenharSelectLivros(books) {
-  const usuario = await buscarUsuario();
+  const userId = carregarStorage(clientChave).id;
+  const usuario = await buscarUsuario(userId);
   const livrosNaoLidos = books.filter(book => {
-    // Verifica se o livro atual está na lista de livros lidos pelo usuário
-    return !usuario.livrosLidos.some(livroLido => livroLido.id === book.id);
+      return !usuario.livrosLidos.some(livroLido => livroLido.id === book.id);
   });
 
   const select = document.querySelector('#books');
-  select.innerHTML = ''; // Limpa a lista de opções antes de desenhar os livros não lidos
+  select.innerHTML = ''; 
 
   for (const book of livrosNaoLidos) {
     const option = document.createElement("option");
@@ -140,14 +196,11 @@ async function desenharSelectLivros(books) {
   }
 }
 async function desenharTableLivros(books) {
-  const usuario = await buscarUsuario();
-  const livrosLidos = books.filter(book => {
-    // Verifica se o livro atual está na lista de livros lidos pelo usuário
-    return usuario.livrosLidos.some(livroLido => livroLido.id === book.id);
-  });
-
+  const userId = carregarStorage(clientChave).id;
+  const usuario = await buscarUsuario(userId);
+  const livrosLidos = carregarStorage(clientChave).livrosLidos;
   const tbody = document.querySelector('#bookListTable tbody');
-  tbody.innerHTML = ''; // Limpa a lista de opções antes de desenhar os livros não lidos
+  tbody.innerHTML = ''; 
 
     for (const book of livrosLidos) {
       const tr = document.createElement('tr')
@@ -160,7 +213,7 @@ async function desenharTableLivros(books) {
 
       const editButton = document.createElement("button");
       editButton.innerText = "Editar";
-      editButton.onclick = () => editBook(book.id);
+      editButton.onclick = () => trocarLivro(book.id);
 
       const removeButton = document.createElement("button");
       removeButton.innerText = "Remover";
@@ -173,11 +226,27 @@ async function desenharTableLivros(books) {
       tbody.appendChild(tr);
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded',async () => {
   const addBookButton = document.getElementById('addBookButton');
   const listBooksButton = document.getElementById('listBooksButton');
   const formSection = document.querySelector('.form-section');
   const listSection = document.querySelector('.list-section');
+
+  const selectClients = document.getElementById("clients")
+
+  const clients = await loadClients()
+
+  for (const client of clients) {
+    const option = document.createElement('option')
+    option.value = client.id
+    option.textContent = client.nome
+    selectClients.appendChild(option)
+  }
+  document.getElementById("selecionarCliente").addEventListener("click", async () =>{
+    const clienteId = selectClients.value
+    const client = await buscarUsuario(clienteId)
+    salvarStorage(clientChave, client)
+  })
 
   formSection.classList.remove('show');
   listSection.classList.remove('show');
@@ -198,3 +267,17 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 loadBooks();
+
+async function loadClients() {
+  try {
+    const response = await fetch(`${API}/clients`);
+    
+    if (!response.ok) {
+      throw new Error('Erro na resposta do servidor: ' + response.statusText);
+    }
+    
+    return response.json()
+  } catch (error) {
+    alert('Ocorreu um erro ao carregar os livros. Verifique os dados e tente novamente.');
+  }
+}

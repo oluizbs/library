@@ -9,7 +9,8 @@
     {
       "nome": "Undefined",
       "id": "d1d3",
-      "autor": "Undefined"
+      "autor": "Undefined",
+      "status": "Ocupado"
     },
     {
       "id": "0ced",
@@ -27,7 +28,7 @@
       "id": "9a01",
       "nome": "O Sol é para Todos",
       "autor": "Harper Lee",
-      "status": "Disponível"
+      "status": "Ocupado"
     },
     {
       "id": "9a02",
@@ -52,37 +53,56 @@
       "nome": "A Arte da Guerra",
       "autor": "Sun Tzu",
       "status": "Disponível"
+    },
+    {
+      "id": "dfae",
+      "nome": "Estabilizador: A volta dos que não foram",
+      "autor": "Caio Sanches ",
+      "status": "Em uso"
     }
   ],
-  "usuarios": [
+  "clients": [
     {
-      "id": "2",
-      "ticket": 2540,
-      "nome": "Frete",
+      "id": "12",
+      "nome": "jacinto",
+      "email": "jacinto@gmail.com",
       "livrosLidos": [
         {
-          "id": "23",
-          "nome": "aaa",
-          "autor": "aaaa",
-          "status": "Disponível"
-        },
-        {
-          "id": "54a8",
+          "id": "9a02",
           "nome": "1984",
           "autor": "George Orwell",
           "status": "Disponível"
         },
         {
-          "id": "b2c3",
-          "nome": "O Alquimista",
-          "autor": "Paulo Coelho",
+          "nome": "Undefined",
+          "id": "d1d3",
+          "autor": "Undefined",
+          "status": "Ocupado"
+        }
+      ]
+    },
+    {
+      "id": "0",
+      "nome": "latrd",
+      "email": "asdpm@asd",
+      "livrosLidos": []
+    },
+    {
+      "id": "6634",
+      "nome": "dsghg",
+      "email": "gjgj@dsfgf",
+      "livrosLidos": [
+        {
+          "id": "9a05",
+          "nome": "Max Verstappen: O Início",
+          "autor": "Max Verstappen",
           "status": "Disponível"
         },
         {
-          "id": "9a04",
-          "nome": "O Código Da Vinci",
-          "autor": "Dan Brown",
-          "status": "Disponível"
+          "id": "dfae",
+          "nome": "Estabilizador: A volta dos que não foram",
+          "autor": "Caio Sanches ",
+          "status": "Em uso"
         }
       ]
     }

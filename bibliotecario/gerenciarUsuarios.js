@@ -1,127 +1,171 @@
-import { API } from "../js/api.js"
-import {Book} from '../js/Book.js'
-
-document.getElementById('addBookForm').addEventListener('submit', function (e) {
+import { API } from "../js/api.js";
+import { Client } from "../usuario/Client.js";  
+document.getElementById('addClientForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   
-  const bookName = document.getElementById('bookName').value;
-  const autor = document.getElementById('autor').value;
-  const book = new Book(bookName,autor)
+  const clientName = document.getElementById('clientName').value;
+  const clientEmail = document.getElementById('clientEmail').value;
+  const client = new Client(clientName, clientEmail);
   
-  fetch(API+'/books', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(book),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro na resposta do servidor: ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      alert('Livro adicionado com sucesso!');
-      document.getElementById('addBookForm').reset();
-      loadBooks(); // Recarregar a lista de livros após adicionar
-    })
-    .catch(error => {
-      alert('Ocorreu um erro ao adicionar o livro. Verifique os dados e tente novamente.');
+  try {
+    const response = await fetch(`${API}/clients`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(client),
     });
+    
+    if (!response.ok) {
+      throw new Error('Erro na resposta do servidor: ' + response.statusText);
+    }
+    
+    await response.json();
+    alert('Cliente adicionado com sucesso!');
+    document.getElementById('addClientForm').reset();
+    loadClients(); 
+  } catch (error) {
+    alert('Ocorreu um erro ao adicionar o cliente. Verifique os dados e tente novamente.');
+  }
 });
 
-document.getElementById("listBooksButton").addEventListener('click', loadBooks);
+document.getElementById("listClientsButton").addEventListener('click', loadClients);
 
-function loadBooks() {
-  fetch(API + "/books")
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro na resposta do servidor: ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then(books => {
-      styleLivros(books);
-    })
-    .catch(error => {
-      alert('Ocorreu um erro ao carregar os livros. Verifique os dados e tente novamente.');
-    });
+async function loadClients() {
+  try {
+    const response = await fetch(`${API}/clients`);
+    
+    if (!response.ok) {
+      throw new Error('Erro na resposta do servidor: ' + response.statusText);
+    }
+    
+    const clients = await response.json();
+    styleClients(clients);
+  } catch (error) {
+    alert('Ocorreu um erro ao carregar os clientes. Verifique os dados e tente novamente.');
+  }
 }
 
-function styleLivros(books) {
-  const ul = document.getElementById("bookList");
-  ul.innerHTML = ''; // Limpar a lista antes de renderizar novamente
-  for (const book of books) {
-    const li = document.createElement("li");
+function styleClients(clients) {
+  const tbody = document.querySelector("#clientListTable tbody");
+  tbody.innerHTML = ''; 
+  
+  for (const client of clients) {
+    const tr = document.createElement('tr');
 
-    // Exibir o nome do livro e o status atual
-    li.innerText = `${book.book_name} - Status: ${book.status}`;
+    const tdName = document.createElement('td');
+    tdName.innerText = client.nome;
 
-    // Dropdown para selecionar o status do livro
-    const statusSelect = document.createElement("select");
+    const tdEmail = document.createElement('td');
+    tdEmail.innerText = client.email;
 
-    const statuses = ['Disponível', 'Em uso', 'Ocupado'];
-    statuses.forEach(status => {
-      const option = document.createElement("option");
-      option.value = status;
-      option.text = status;
-      option.selected = book.status === status;
-      statusSelect.appendChild(option);
-    });
+    const editButton = document.createElement("button");
+    editButton.innerText = "Editar";
+    editButton.onclick = () => editClient(client.id);
 
-    // Atualiza o status quando o bibliotecário muda a opção no dropdown
-    statusSelect.addEventListener('change', () => {
-      updateBookStatus(book.id, statusSelect.value);
-    });
+    const removeButton = document.createElement("button");
+    removeButton.innerText = "Remover";
+    removeButton.onclick = () => removeClient(client.id);
 
-    li.appendChild(statusSelect);
-    ul.appendChild(li);
+    const tdOptions = document.createElement('td');
+    tdOptions.append(editButton, removeButton);
+
+    tr.append(tdName, tdEmail, tdOptions);
+    tbody.appendChild(tr);
+  }
+}
+
+async function editClient(clientId) {
+  const newClientName = prompt("Digite o novo nome do cliente:");
+  if (!newClientName) {
+    alert("O nome do cliente não pode ser vazio!");
+    return;
+  }
+  const newClientEmail = prompt("Digite o novo e-mail do cliente:");
+  if (!newClientEmail) {
+    alert("O e-mail do cliente não pode ser vazio!");
+    return;
   }
 
+  const client = await fetchClient(clientId);
+  client.nome = newClientName;
+  client.email = newClientEmail;
+
+  try {
+    const response = await fetch(`${API}/clients/${clientId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(client),
+    });
+    
+    if (!response.ok) {
+      throw new Error('Erro ao alterar o cliente: ' + response.statusText);
+    }
+    
+    await response.json();
+    alert('Cliente alterado com sucesso!');
+    loadClients(); 
+  } catch (error) {
+    alert('Ocorreu um erro ao alterar o cliente. Verifique os dados e tente novamente.');
+  }
 }
 
-// Função para atualizar o status do livro
-function updateBookStatus(bookId, newStatus) {
-  fetch(API + '/books/' + bookId, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({status: newStatus }),
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Erro ao atualizar o status: ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      alert('Status do livro atualizado com sucesso!');
-      loadBooks(); // Recarregar a lista de livros após a atualização
-    })
-    .catch(error => {
-      alert('Ocorreu um erro ao atualizar o status do livro. Verifique os dados e tente novamente.');
+async function fetchClient(clientId) {
+  try {
+    const response = await fetch(`${API}/clients/${clientId}`);
+    if (!response.ok) {
+      throw new Error('Erro na resposta do servidor: ' + response.statusText);
+    }
+    return response.json();
+  } catch (error) {
+    alert('Ocorreu um erro ao buscar o cliente. Verifique os dados e tente novamente.');
+  }
+}
+
+async function removeClient(clientId) {
+  if (!confirm("Tem certeza de que deseja remover este cliente?")) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`${API}/clients/${clientId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
     });
+    
+    if (!response.ok) {
+      throw new Error('Erro ao remover o cliente: ' + response.statusText);
+    }
+    
+    await response.json();
+    alert('Cliente removido com sucesso!');
+    loadClients();
+  } catch (error) {
+    alert('Ocorreu um erro ao remover o cliente. Verifique os dados e tente novamente.');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const addBookButton = document.getElementById('addBookButton');
-  const listBooksButton = document.getElementById('listBooksButton');
+  const addClientButton = document.getElementById('addClientButton');
+  const listClientsButton = document.getElementById('listClientsButton');
   const formSection = document.querySelector('.form-section');
   const listSection = document.querySelector('.list-section');
 
   formSection.classList.remove('show');
   listSection.classList.remove('show');
 
-  addBookButton.addEventListener('click', () => {
+  addClientButton.addEventListener('click', () => {
       formSection.classList.add('show');
       listSection.classList.remove('show');
   });
 
-  listBooksButton.addEventListener('click', () => {
+  listClientsButton.addEventListener('click', () => {
       listSection.classList.add('show');
       formSection.classList.remove('show');
-      loadBooks(); // Carregar os livros quando a lista for exibida
+      loadClients();
   });
 });
