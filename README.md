@@ -1,7 +1,7 @@
 
 # Sistema para biblioteca
 
-Esse projeto tenta simular um simples sistema de uma biblioteca.
+Esse projeto tenta simular um sistema de uma biblioteca.
 
 Para iniciar o servidor do projeto é necessario ter o NodeJS instalado.
 
