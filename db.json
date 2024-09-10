@@ -1,24 +1,6 @@
 {
   "books": [
     {
-      "nome": "Gabigol",
-      "id": "b2c3",
-      "status": "Livro",
-      "autor": "Max"
-    },
-    {
-      "nome": "Undefined",
-      "id": "d1d3",
-      "autor": "Undefined",
-      "status": "Ocupado"
-    },
-    {
-      "id": "0ced",
-      "nome": "Gabigoe",
-      "autor": "Gabriel García Márquez",
-      "status": "Uere"
-    },
-    {
       "id": "8b57",
       "nome": "A Revolução dos Bichos",
       "autor": "George Orwell",
@@ -28,7 +10,7 @@
       "id": "9a01",
       "nome": "O Sol é para Todos",
       "autor": "Harper Lee",
-      "status": "Ocupado"
+      "status": "Disponível"
     },
     {
       "id": "9a02",
@@ -59,18 +41,24 @@
       "nome": "Estabilizador: A volta dos que não foram",
       "autor": "Caio Sanches ",
       "status": "Em uso"
+    },
+    {
+      "id": "4ecc",
+      "nome": "Dom Quixote",
+      "autor": "Miguel de Cervantes",
+      "status": "Disponível"
     }
   ],
   "clients": [
     {
       "id": "12",
-      "nome": "jacinto",
-      "email": "jacinto@gmail.com",
+      "nome": "Roberto",
+      "email": "robertinho@gmail.com",
       "livrosLidos": [
         {
-          "id": "9a02",
-          "nome": "1984",
-          "autor": "George Orwell",
+          "id": "9a06",
+          "nome": "Sapiens: Uma Breve História da Humanidade",
+          "autor": "Yuval Noah Harari",
           "status": "Disponível"
         },
         {
@@ -82,29 +70,10 @@
       ]
     },
     {
-      "id": "0",
-      "nome": "latrd",
-      "email": "asdpm@asd",
+      "id": "c62e",
+      "nome": "Japa",
+      "email": "emailJapa@email.com",
       "livrosLidos": []
-    },
-    {
-      "id": "6634",
-      "nome": "dsghg",
-      "email": "gjgj@dsfgf",
-      "livrosLidos": [
-        {
-          "id": "9a05",
-          "nome": "Max Verstappen: O Início",
-          "autor": "Max Verstappen",
-          "status": "Disponível"
-        },
-        {
-          "id": "dfae",
-          "nome": "Estabilizador: A volta dos que não foram",
-          "autor": "Caio Sanches ",
-          "status": "Em uso"
-        }
-      ]
     }
   ]
 }
