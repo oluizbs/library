@@ -33,7 +33,7 @@ Inicie o servidor
     npx json-server --watch db.json --port 8080
 ```
 
-Inicie o projeto atráves da extensão Live Server do VSCode
+Inicie o projeto atráves da extensão Live Server do VSCode, através da página index.html
 
 ## Documentação
 
