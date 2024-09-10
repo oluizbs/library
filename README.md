@@ -61,7 +61,7 @@ Isso é feito através da URL: (caso esteja utilizando o Live Server)
 
 ### Usuario
 
-O usuário do sistema tem controle sobre as informações dos livros que ele leu.
+A seção de usuário funciona como um controle de fluxo para que o bibliotecário consiga administrar quais usuários leram cada livro.
 
 Isso é feito através da URL: (caso esteja utilizando o Live Server)
 
