@@ -44,7 +44,7 @@ O administrador do sistema é responsável por adicionar, editar e excluir livro
 Isso é feito através da URL: (caso esteja utilizando o Live Server)
 
 ```HTTP
-    GET http://localhost:5500/admin/admin.html
+    http://localhost:5500/admin/admin.html
 ```  
 
 ### Bibliotecário
@@ -56,7 +56,7 @@ O bibliotecário também é responsavel por controlar o fluxo dos livros do sist
 Isso é feito através da URL: (caso esteja utilizando o Live Server)
 
 ```HTTP
-    GET http://localhost:5500/bibliotecario/bibliotecario.html
+    http://localhost:5500/bibliotecario/bibliotecario.html
 ```  
 
 ### Usuario
@@ -66,7 +66,7 @@ O usuário do sistema tem controle sobre as informações dos livros que ele leu
 Isso é feito através da URL: (caso esteja utilizando o Live Server)
 
 ```HTTP
-    GET http://localhost:5500/usuario/usuario.html
+    http://localhost:5500/usuario/usuario.html
 ```
 
 ## Rodando os testes
