@@ -152,5 +152,9 @@ Garantir que as funcionalidades CRUD (Criar, Alterar, Listar e Remover) dos cada
 ### Processo de Teste
 Para cada um dos cenários, foi criado um script de teste automatizado utilizando a extensão Playwright.
 
+```HTTP
+    npx playwright test
+``` 
+
 ### Conclusão
 Os testes foram executados com sucesso utilizando a extensão Playwright. Todos os cenários cobertos, desde a criação de livros até o controle de status e seleção de livros por usuários, funcionam conforme esperado. A validação foi feita através da verificação de texto na interface e da simulação das ações do usuário real no sistema.
