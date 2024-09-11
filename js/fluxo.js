@@ -1,4 +1,4 @@
-import { API } from "../js/api.js";
+import { API } from "./api.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   loadBooks(); 

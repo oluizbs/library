@@ -1,5 +1,5 @@
-import { API } from "../js/api.js";
-import { Book } from "../js/Book.js";
+import { API } from "./api.js";
+import { Book } from "./Book.js";
 
 document.getElementById('addBookForm').addEventListener('submit', async function (e) {
   e.preventDefault();

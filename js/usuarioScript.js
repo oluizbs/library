@@ -28,7 +28,7 @@ function carregarStorage(chave){
 
 function salvarStorage(chave, client){
   localStorage.setItem(chave,JSON.stringify(client))
-  document.getElementById("msgSelect").innerText = client.nome
+  document.getElementById("msgSelect").innerText = client.nome +" está selecionado!"
 }
 
 

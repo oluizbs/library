@@ -47,6 +47,12 @@
       "nome": "Dom Quixote",
       "autor": "Miguel de Cervantes",
       "status": "Disponível"
+    },
+    {
+      "id": "199e",
+      "nome": "O Senhor dos Anéis",
+      "autor": " J.R.R. Tolkien",
+      "status": "Disponível"
     }
   ],
   "clients": [
@@ -62,10 +68,10 @@
           "status": "Disponível"
         },
         {
-          "nome": "Undefined",
-          "id": "d1d3",
-          "autor": "Undefined",
-          "status": "Ocupado"
+          "id": "9a05",
+          "nome": "Max Verstappen: O Início",
+          "autor": "Max Verstappen",
+          "status": "Disponível"
         }
       ]
     },
@@ -73,7 +79,27 @@
       "id": "c62e",
       "nome": "Japa",
       "email": "emailJapa@email.com",
-      "livrosLidos": []
+      "livrosLidos": [
+        {
+          "id": "9a07",
+          "nome": "A Arte da Guerra",
+          "autor": "Sun Tzu",
+          "status": "Disponível"
+        }
+      ]
+    },
+    {
+      "id": "d490",
+      "nome": "Bruno",
+      "email": "emailBruno@email.com",
+      "livrosLidos": [
+        {
+          "id": "9a06",
+          "nome": "Sapiens: Uma Breve História da Humanidade",
+          "autor": "Yuval Noah Harari",
+          "status": "Disponível"
+        }
+      ]
     }
   ]
 }

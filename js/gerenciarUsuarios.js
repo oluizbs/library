@@ -1,5 +1,5 @@
-import { API } from "../js/api.js";
-import { Client } from "../usuario/Client.js";  
+import { API } from "./api.js";
+import { Client } from "./Client.js";  
 document.getElementById('addClientForm').addEventListener('submit', async function (e) {
   e.preventDefault();
   
