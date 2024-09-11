@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="Icon" href="https://em-content.zobj.net/source/emoji-one/98/blue-book_1f4d8.png">
-    <script type="module" src="gerenciarUsuarios.js" defer></script>
+    <link rel="stylesheet" href="/css/gerenciarUsuarios.css">
+    <script type="module" src="/js/gerenciarUsuarios.js" defer></script>
     <title>Controle de Usuários</title>
 </head>
 <body>
     <div class="container">
-        <h1>Controle de Usuários</h1>
-
-        <button id="addClientButton" class="btn">Adicionar Cliente</button>
-        <button id="listClientsButton" class="btn">Listar Clientes</button>
-
-        <!-- Formulário para adicionar cliente -->
+        <h1>Gerenciar Usuários</h1>
+        
         <div class="form-section">
-            <h2>Adicionar Cliente</h2>
+            <h2>Adicionar Usuário</h2>
             <form id="addClientForm">
+
                 <label for="clientName">Nome:</label>
                 <input type="text" id="clientName" required>
                 <br>
@@ -27,10 +25,10 @@
                 <button type="submit" class="btn">Adicionar</button>
             </form>
         </div>
-
-        <!-- Seção de listagem de clientes -->
+        
         <div class="list-section">
-            <h2>Lista de Clientes</h2>
+            <h2>Listar Usuários</h2>
+            <button id="listClientsButton" class="btn">Listar Usuários</button>
             <table id="clientListTable">
                 <thead>
                     <tr>
@@ -40,7 +38,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- As linhas serão preenchidas pelo JavaScript -->
                 </tbody>
             </table>
         </div>

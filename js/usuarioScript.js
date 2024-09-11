@@ -28,7 +28,7 @@ function carregarStorage(chave){
 
 function salvarStorage(chave, client){
   localStorage.setItem(chave,JSON.stringify(client))
-  document.getElementById("msgSelect").innerText = client.nome
+  document.getElementById("msgSelect").innerText = client.nome +" está selecionado!"
 }
 
 
@@ -96,12 +96,11 @@ async function desenharSelectEditLivros(books) {
   const userId = carregarStorage(clientChave).id;
   const usuario = await buscarUsuario(userId);
   const livrosNaoLidos = books.filter(book => {
-    // Verifica se o livro atual está na lista de livros lidos pelo usuário
     return !usuario.livrosLidos.some(livroLido => livroLido.id === book.id);
   });
 
   const select = document.querySelector('#editLivros');
-  select.innerHTML = ''; // Limpa a lista de opções antes de desenhar os livros não lidos
+  select.innerHTML = '';
 
   for (const book of livrosNaoLidos) {
     const option = document.createElement("option");

@@ -1,7 +1,7 @@
-import { API } from "../js/api.js";
+import { API } from "./api.js";
 
 document.addEventListener('DOMContentLoaded', () => {
-  loadBooks(); // Carregar os livros ao carregar a página
+  loadBooks(); 
 });
 
 function loadBooks() {
@@ -13,8 +13,8 @@ function loadBooks() {
       return response.json();
     })
     .then(data => {
-      console.log('Dados recebidos:', data); // Verifique os dados recebidos
-      const books = data; // Acessar o array de livros dentro do JSON
+      console.log('Dados recebidos:', data); 
+      const books = data; 
       renderBooksTable(books);
     })
     .catch(error => {
@@ -31,8 +31,8 @@ function altBook(bookId, status) {
       return response.json();
     })
     .then(data => {
-      console.log('Dados recebidos:', data); // Verifique os dados recebidos
-      const book = data; // Acessar o array de livros dentro do JSON
+      console.log('Dados recebidos:', data);
+      const book = data; 
       book.status = status
       updateBookStatus(bookId, book)
     })
@@ -44,10 +44,9 @@ function altBook(bookId, status) {
 
 function renderBooksTable(books) {
   const tbody = document.querySelector("#bookTable tbody");
-  tbody.innerHTML = ''; // Limpar o conteúdo existente da tabela
+  tbody.innerHTML = ''; 
   
   for (const book of books) {
-    // Verifique se o livro tem os campos necessários
     if (book.id) {
       const tr = document.createElement("tr");
       tr.dataset.id = book.id
@@ -56,16 +55,14 @@ function renderBooksTable(books) {
       idTd.innerText = book.id || 'ID não disponível';
       tr.appendChild(idTd);
 
-      // Coluna Nome do Livro
       const nameTd = document.createElement("td");
-      nameTd.innerText = book.nome || 'Nome não disponível'; // Exibir 'Nome não disponível' se book_name não estiver presente
+      nameTd.innerText = book.nome || 'Nome não disponível'; 
       tr.appendChild(nameTd);
 
       const autorTd = document.createElement("td");
-      autorTd.innerText = book.autor || 'Nome do autor não disponível'; // Exibir 'Nome não disponível' se book_name não estiver presente
+      autorTd.innerText = book.autor || 'Nome do autor não disponível'; 
       tr.appendChild(autorTd);
 
-      // Coluna Status com dropdown para alterar o status
       const statusTd = document.createElement("td");
       const statusSelect = document.createElement("select");
       
@@ -84,11 +81,9 @@ function renderBooksTable(books) {
 
       statusTd.appendChild(statusSelect);
       tr.appendChild(statusTd);
-
-      // Adiciona a linha à tabela
       tbody.appendChild(tr);
     } else {
-      console.warn('Livro sem ID:', book); // Adicione um aviso para livros sem ID
+      console.warn('Livro sem ID:', book); 
     }
   }
 }
@@ -109,7 +104,7 @@ function updateBookStatus(bookId, book) {
     })
     .then(data => {
       alert('Status do livro atualizado com sucesso!');
-      loadBooks(); // Recarregar a lista de livros para refletir a atualização
+      loadBooks(); 
     })
     .catch(error => {
       console.error('Ocorreu um erro ao atualizar o status do livro:', error);

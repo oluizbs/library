@@ -24,13 +24,12 @@ body {
 a{
     color: white;
     text-decoration: none;
-    background-color: #4a90e2;
     padding: 15px;
     font-size: 20px;
     border-radius: 8px;
+    background-color: #4a90e2;
     margin-left: 8px;
 }
-
 
 footer {
     text-align: center;
