@@ -1,6 +1,24 @@
 {
   "books": [
     {
+      "nome": "Gabigol",
+      "id": "b2c3",
+      "status": "Livro",
+      "autor": "Max"
+    },
+    {
+      "nome": "Undefined",
+      "id": "d1d3",
+      "autor": "Undefined",
+      "status": "Ocupado"
+    },
+    {
+      "id": "0ced",
+      "nome": "Gabigoe",
+      "autor": "Gabriel García Márquez",
+      "status": "Uere"
+    },
+    {
       "id": "8b57",
       "nome": "A Revolução dos Bichos",
       "autor": "George Orwell",
@@ -31,26 +49,45 @@
       "status": "Disponível"
     },
     {
+<<<<<<< HEAD
+=======
+      "id": "9a07",
+      "nome": "A Arte da Guerra",
+      "autor": "Sun Tzu",
+      "status": "Em uso"
+    },
+    {
+>>>>>>> 4283dbc8a66cabb520ed3030c8b2b331dc3cab7e
       "id": "dfae",
       "nome": "Estabilizador: A volta dos que não foram",
       "autor": "Caio Sanches ",
       "status": "Em uso"
-    },
-    {
-      "id": "4ecc",
-      "nome": "Dom Quixote",
-      "autor": "Miguel de Cervantes",
-      "status": "Disponível"
-    },
-    {
-      "id": "199e",
-      "nome": "O Senhor dos Anéis",
-      "autor": " J.R.R. Tolkien",
-      "status": "Disponível"
     }
   ],
   "clients": [
     {
+<<<<<<< HEAD
+=======
+      "id": "12",
+      "nome": "Roberto",
+      "email": "robertinho@gmail.com",
+      "livrosLidos": [
+        {
+          "id": "9a06",
+          "nome": "Sapiens: Uma Breve História da Humanidade",
+          "autor": "Yuval Noah Harari",
+          "status": "Disponível"
+        },
+        {
+          "nome": "Undefined",
+          "id": "d1d3",
+          "autor": "Undefined",
+          "status": "Ocupado"
+        }
+      ]
+    },
+    {
+>>>>>>> 4283dbc8a66cabb520ed3030c8b2b331dc3cab7e
       "id": "c62e",
       "nome": "Japa",
       "email": "emailJapa@email.com",
@@ -75,6 +112,54 @@
           "status": "Disponível"
         }
       ]
+    },
+    {
+      "id": "2e6d",
+      "nome": "usuario",
+      "email": "usuario@email.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "089a",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "013d",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "2baf",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "b075",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "6443",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "952e",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "da5a",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
     }
   ]
 }
