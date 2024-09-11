@@ -31,12 +31,6 @@
       "status": "Disponível"
     },
     {
-      "id": "9a07",
-      "nome": "A Arte da Guerra",
-      "autor": "Sun Tzu",
-      "status": "Disponível"
-    },
-    {
       "id": "dfae",
       "nome": "Estabilizador: A volta dos que não foram",
       "autor": "Caio Sanches ",
@@ -57,33 +51,14 @@
   ],
   "clients": [
     {
-      "id": "12",
-      "nome": "Roberto",
-      "email": "robertinho@gmail.com",
-      "livrosLidos": [
-        {
-          "id": "9a06",
-          "nome": "Sapiens: Uma Breve História da Humanidade",
-          "autor": "Yuval Noah Harari",
-          "status": "Disponível"
-        },
-        {
-          "id": "9a05",
-          "nome": "Max Verstappen: O Início",
-          "autor": "Max Verstappen",
-          "status": "Disponível"
-        }
-      ]
-    },
-    {
       "id": "c62e",
       "nome": "Japa",
       "email": "emailJapa@email.com",
       "livrosLidos": [
         {
-          "id": "9a07",
-          "nome": "A Arte da Guerra",
-          "autor": "Sun Tzu",
+          "id": "9a01",
+          "nome": "O Sol é para Todos",
+          "autor": "Harper Lee",
           "status": "Disponível"
         }
       ]

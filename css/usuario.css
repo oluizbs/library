@@ -73,3 +73,7 @@ body {
 #editLivros{
   margin-top: 2%;
 }
+
+#bookList button{
+  margin-left: 5%;
+}

@@ -29,6 +29,7 @@ function carregarStorage(chave){
 function salvarStorage(chave, client){
   localStorage.setItem(chave,JSON.stringify(client))
   document.getElementById("msgSelect").innerText = client.nome +" está selecionado!"
+
 }
 
 
@@ -152,17 +153,18 @@ async function readBook(userId, usuario) {
   }
 }
 
-async function removeBook(bookId) {
+async function removeBook(userId, client) {
   if (!confirm("Tem certeza de que deseja remover este livro?")) {
     return;
   }
 
   try {
-    const response = await fetch(`${API}/books/${bookId}`, {
-      method: 'DELETE',
+    const response = await fetch(`${API}/clients/${userId}`, {
+      method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
+      body: JSON.stringify(client),
     });
 
     if (!response.ok) {
@@ -216,7 +218,7 @@ async function desenharTableLivros(books) {
 
       const removeButton = document.createElement("button");
       removeButton.innerText = "Remover";
-      removeButton.onclick = () => removeBook(book.id);
+      removeButton.onclick = () => buscaRemove(book.id);
 
       const tdOpcoes = document.createElement('td');
       tdOpcoes.append(editButton, removeButton);
@@ -225,6 +227,21 @@ async function desenharTableLivros(books) {
       tbody.appendChild(tr);
     }
 }
+
+function buscaRemove(bookId) {
+  const dados = carregarStorage(clientChave);
+  const livrosLidos = dados.livrosLidos;
+
+  const index = livrosLidos.findIndex(livro => livro.id === bookId);
+  if (index !== -1) {
+    livrosLidos.splice(index, 1); 
+  }
+  const id = dados.id
+  dados.livrosLidos = livrosLidos
+  removeBook(id,dados)
+  salvarStorage(clientChave, dados); 
+}
+
 document.addEventListener('DOMContentLoaded',async () => {
   const addBookButton = document.getElementById('addBookButton');
   const listBooksButton = document.getElementById('listBooksButton');
