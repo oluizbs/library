@@ -1,5 +1,9 @@
 {
   "dependencies": {
-    "json-server": "^1.0.0-beta.2"
+    "json-server": "^1.0.0-beta.2",
+    "playwright": "^1.47.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0"
   }
 }

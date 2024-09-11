@@ -3,7 +3,7 @@
     {
       "nome": "Gabigol",
       "id": "b2c3",
-      "status": "Livro",
+      "status": "Ocupado",
       "autor": "Max"
     },
     {
@@ -52,13 +52,55 @@
       "id": "9a07",
       "nome": "A Arte da Guerra",
       "autor": "Sun Tzu",
-      "status": "Disponível"
+      "status": "Em uso"
     },
     {
       "id": "dfae",
       "nome": "Estabilizador: A volta dos que não foram",
       "autor": "Caio Sanches ",
       "status": "Em uso"
+    },
+    {
+      "id": "ee09",
+      "nome": "Livro teste",
+      "autor": "Autor Teste",
+      "status": "Disponível"
+    },
+    {
+      "id": "4c56",
+      "nome": "Livro teste 2",
+      "autor": "Autor teste 2",
+      "status": "Disponível"
+    },
+    {
+      "id": "c5a2",
+      "nome": "Livro teste 2",
+      "autor": "Autor teste 2",
+      "status": "Disponível"
+    },
+    {
+      "id": "8f8b",
+      "nome": "Livro teste 2",
+      "autor": "Autor teste 2",
+      "status": "Disponível"
+    },
+    {
+      "id": "770d",
+      "nome": "Livro teste 2",
+      "autor": "Autor teste 2",
+      "status": "Disponível"
+    },
+    {
+      "id": "5984",
+      "nome": "Livro teste 2",
+      "autor": "Autor teste 2",
+      "status": "Disponível"
+    },
+    {
+      "id": "d330",
+      "nome": "Livro teste 2",
+      "autor": "Autor teste 2",
+      "status": "Disponível"
     }
   ],
   "clients": [
@@ -78,6 +120,12 @@
           "id": "d1d3",
           "autor": "Undefined",
           "status": "Ocupado"
+        },
+        {
+          "id": "4c56",
+          "nome": "Livro teste 2",
+          "autor": "Autor teste 2",
+          "status": "Disponível"
         }
       ]
     },
@@ -105,6 +153,54 @@
           "status": "Em uso"
         }
       ]
+    },
+    {
+      "id": "2e6d",
+      "nome": "usuario",
+      "email": "usuario@email.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "089a",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "013d",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "2baf",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "b075",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "6443",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "952e",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
+    },
+    {
+      "id": "da5a",
+      "nome": "usuario teste",
+      "email": "teste@usuario.com",
+      "livrosLidos": []
     }
   ]
 }
